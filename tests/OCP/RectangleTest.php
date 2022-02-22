@@ -1,6 +1,6 @@
 <?php
 
-namespace AwesomePhpCode\SolidPrinciples\Tests;
+namespace AwesomePhpCode\SolidPrinciples\Tests\OCP;
 
 use AwesomePhpCode\SolidPrinciples\OCP\Rectangle;
 use PHPUnit\Framework\TestCase;
