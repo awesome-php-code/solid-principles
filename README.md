@@ -48,3 +48,49 @@ class Circle extends Figure
     }
 }
 ```
+
+## Liskov Substitution Principle
+
+This principle says that the objects of a program can be substituted by their subtypes without altering the correct
+operation of the program. That is, an argument to a function or method that accepts a class or interface should work
+the same with any subtype of the same class or interface. For this to be possible, it is necessary that the signature
+of the implemented or overridden methods are the same and do not add or change the TYPE of the result of the
+function or throw new exceptions.
+
+In this example you can use the `printContent()` method to calculate shape's areas in the client code. You can also
+interchange the type by any subtype without affecting the client code.
+
+```php
+class Client
+{
+    public static function printContent(Parser $parser)
+    {
+        echo $parser->output();
+    }
+}
+```
+
+In this case, you can use any parser that extends the main `Parser` class.
+
+```php
+$parser = new Parser([
+    [1, 'Steave', 'Developer'],
+    [2, 'Andreas', 'Tester'],
+]);
+
+// subtype CSV
+$csv = new CSVParser([
+    [1, 'Steave', 'Developer'],
+    [2, 'Andreas', 'Tester'],
+]);
+
+// subtype MarkdownTable
+$marrkdown = new MarkdownParser([
+    [1, 'Steave', 'Developer'],
+    [2, 'Andreas', 'Tester'],
+]);
+
+Client::printContent($parser);
+Client::printContent($csv);
+Client::printContent($markdown);
+```
